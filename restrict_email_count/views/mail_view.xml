@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+     
+        <record id="view_company_form_inh_crdv" model="ir.ui.view">
+            <field name="name">res.company.form.inh.crdv</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">               
+               <group name="account_grp" position="after">
+                    <group name="mail_grp" string="Mail" groups="base.group_system" >
+                        <field name="out_mail_count" required="1"/>
+                    </group>
+                </group> 
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_mail_form_inh1">
+            <field name="name">mail.mail.form.inh</field>
+            <field name="model">mail.mail</field>
+            <field name="inherit_id" ref="mail.view_mail_form"/>
+            <field name="arch" type="xml">
+                    <button name="send" position="attributes">
+                        <attribute name="context">{'from_queue': True}</attribute>
+                    </button>
+            </field>
+        </record>
+                
+    </data>
+</openerp>
